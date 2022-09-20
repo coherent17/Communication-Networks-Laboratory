@@ -13,7 +13,7 @@ def coinChange(coins, amount):
             if currAmount - c >= 0:
                 dp[currAmount] = min(dp[currAmount], 1 + dp[currAmount - c])
 
-    return dp[amount] if dp[amount] != float('inf') else -1
+    return dp[amount]
 
 
 n = int(input())
@@ -22,6 +22,5 @@ for i in range(n):
     coinsSize, amount = input().split(" ")
     amount = int(amount)
     coins = list(map(int, input().split(" ")))
-    coins.sort()    #just to make sure the coins be sorted
     result = coinChange(coins, amount)
     print(result)
