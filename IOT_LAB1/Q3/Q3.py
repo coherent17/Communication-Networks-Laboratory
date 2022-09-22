@@ -73,5 +73,8 @@ try:
             turn_on()
         time.sleep(3)
 
+except KeyboardInterrupt:
+    print('stop')
+
 finally:
     GPIO.cleanup()
