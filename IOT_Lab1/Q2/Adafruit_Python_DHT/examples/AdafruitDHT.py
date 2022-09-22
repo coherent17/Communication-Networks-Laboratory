@@ -22,6 +22,13 @@
 import sys
 
 import Adafruit_DHT
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BOARD)
+LED_PIN = 12
+GPIO.setup(LED_PIN, GPIO.OUT)
+GPIO.output(LED_PIN, GPIO.LOW)
 
 
 # Parse command line parameters.
@@ -48,7 +55,14 @@ humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 # guarantee the timing of calls to read the sensor).
 # If this happens try again!
 if humidity is not None and temperature is not None:
-    print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
+    print('Temp={0:0.1f}  Humidity={1:0.1f}%'.format(temperature, humidity))
+    temperature_threshold = 25
+    if temperature > temperature_threshold:
+        print('Temperature is over %d degree' %(temperature_threshold))
+        GPIO.output(LED_PIN, GPIO.HIGH)
+        time.sleep(10)                  #turn on LED for 10 seconds
+    GPIO.cleanup()
+
 else:
     print('Failed to get reading. Try again!')
     sys.exit(1)

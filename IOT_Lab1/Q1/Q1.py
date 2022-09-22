@@ -1,17 +1,21 @@
 import RPi.GPIO as GPIO
 import time
 
+#using board number system
 GPIO.setmode(GPIO.BOARD)
 LED_PIN = 12
 GPIO.setup(LED_PIN, GPIO.OUT)
+
+#time unit
 unit = 0.3
 
-
+#short in Morse Code
 def dot():
     GPIO.output(LED_PIN, GPIO.HIGH)
     time.sleep(1 * unit)
     GPIO.output(LED_PIN, GPIO.LOW)
 
+#long in Morse Code
 def dash():
     GPIO.output(LED_PIN, GPIO.HIGH)
     time.sleep(3 * unit)
@@ -58,8 +62,7 @@ def U():
     dash()
 
 
-
-
+#main driven code
 if __name__ == "__main__":
 
     N()
@@ -70,5 +73,7 @@ if __name__ == "__main__":
     space_between_letter()
     U()
     space_between_letter()
+
+    #wait seven unit to stop the program
     time.sleep(7 * unit)
     GPIO.cleanup()
