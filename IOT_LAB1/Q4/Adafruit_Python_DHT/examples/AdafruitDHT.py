@@ -1,6 +1,4 @@
 #!/usr/bin/python
-# Copyright (c) 2014 Adafruit Industries
-# Author: Tony DiCola
 import sys
 import Adafruit_DHT
 import RPi.GPIO as GPIO
@@ -37,7 +35,6 @@ GPIO.output(LED_PIN,GPIO.LOW)
 
 def measure():
     
-
     GPIO.output(TRIG, GPIO.HIGH)
     time.sleep(0.00001)
     GPIO.output(TRIG, GPIO.LOW)
@@ -68,17 +65,20 @@ def turn_on():
     GPIO.output(LED_PIN, GPIO.LOW)
 
 
-while(1):
-    
-    distance = measure()
-    print(distance)
-    if distance > 20:
-        pass
-    elif distance <= 20 and distance >= 10:
-        shine()
-    else:
-        turn_on()
-    time.sleep(3)
+try:
+    while(1):
+        distance = measure()
+        print(distance)
+        if distance > 20:
+            pass
+        elif distance <= 20 and distance >= 10:
+            shine()
+        else:
+            turn_on()
+        time.sleep(3)
 
-GPIO.cleanup()
+except KeyboardInterrupt:
+    print('stop')
 
+finally:
+    GPIO.cleanup()
