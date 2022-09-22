@@ -55,21 +55,23 @@ def measure():
     d = d / 2
     return d * 100
 
-while(1):
-    distance = measure()
-    print(distance)
+try:
+    while(1):
+        distance = measure()
+        print(distance)
 
-    #keep the led off
-    if distance > 20:
-    	pass
+        #keep the led off
+        if distance > 20:
+            pass
 
-    #LED shine
-    elif distance <= 20 and distance >= 10:
-	    shine()
-    
-    #LED turn on
-    else:
-    	turn_on()
-    time.sleep(3)
+        #LED shine
+        elif distance <= 20 and distance >= 10:
+            shine()
+        
+        #LED turn on
+        else:
+            turn_on()
+        time.sleep(3)
 
-GPIO.cleanup()
+finally:
+    GPIO.cleanup()
