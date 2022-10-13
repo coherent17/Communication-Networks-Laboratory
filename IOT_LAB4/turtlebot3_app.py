@@ -177,13 +177,13 @@ if __name__=="__main__":
                 print(vels(target_linear_vel,target_angular_vel))
             elif msg1 == 'a' :
                 #add turn left action
-		target_angular_vel = checkAngularLimitVelocity(target_angular_vel + ANG_VEL_STEP_SIZE)
-		status = status + 1
+                target_angular_vel = checkAngularLimitVelocity(target_angular_vel + ANG_VEL_STEP_SIZE)
+                status = status + 1
                 print(vels(target_linear_vel,target_angular_vel))
             elif msg1 == 'd' :
                 #add turn right action
-		target_angular_vel = checkAngularLimitVelocity(target_angular_vel - ANG_VEL_STEP_SIZE)
-		status = status + 1
+                target_angular_vel = checkAngularLimitVelocity(target_angular_vel - ANG_VEL_STEP_SIZE)
+                status = status + 1
                 print(vels(target_linear_vel,target_angular_vel))
             elif msg1 == ' ' or msg1 == 's' :
                 target_linear_vel   = 0.0
