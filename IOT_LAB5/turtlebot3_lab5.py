@@ -40,7 +40,7 @@ PORT = 8001
 #IPV4 TCP protocol
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind((HOST,PORT))
-sock.listen(5)
+sock.listen(5)    #at most 5 client can connect to server
 
 #accept client connection and store the address
 conn, addr = sock.accept()
