@@ -136,18 +136,17 @@ if __name__=="__main__":
 
     turtlebot3_model = rospy.get_param("model", "burger")
 
-    status = 0
     target_linear_vel   = 0.0
     target_angular_vel  = 0.0
     control_linear_vel  = 0.0
     control_angular_vel = 0.0
-    status=0
+
     try:
         print(text)
         while(1):
             
             try:
-		#receive message from client (at most 1024 bytes)
+		            #receive message from client (at most 1024 bytes)
                 msg = conn.recv(1024)
                 print(addr)
                 print(msg)
@@ -158,19 +157,15 @@ if __name__=="__main__":
 
             if msg == 'w' :
                 target_linear_vel = checkLinearLimitVelocity(target_linear_vel + LIN_VEL_STEP_SIZE)
-                status = status - 1
                 print(vels(target_linear_vel,target_angular_vel))
             elif msg == 'x' :
                 target_linear_vel = checkLinearLimitVelocity(target_linear_vel - LIN_VEL_STEP_SIZE)
-                status = status - 1
                 print(vels(target_linear_vel,target_angular_vel))
             elif msg == 'a' :
                 target_angular_vel = checkAngularLimitVelocity(target_angular_vel + ANG_VEL_STEP_SIZE)
-                status = status - 1
                 print(vels(target_linear_vel,target_angular_vel))
             elif msg == 'd' :
                 target_angular_vel = checkAngularLimitVelocity(target_angular_vel - ANG_VEL_STEP_SIZE)
-                status = status -1
                 print(vels(target_linear_vel,target_angular_vel))
             elif msg == 's' :
                 target_linear_vel   = 0.0
