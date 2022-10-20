@@ -37,7 +37,7 @@ import time
 HOST = '172.20.10.7'
 PORT = 8001
 
-#IPV4, and TCP protocol
+#IPV4 TCP protocol
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind((HOST,PORT))
 sock.listen(5)
