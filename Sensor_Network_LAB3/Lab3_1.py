@@ -8,8 +8,7 @@ def index():
     # 此處會用到的 function
     #   1. render_template('index.html', ID = ....)
     ''' start of you code '''
-    ID = str('0811562')
-    return render_template('index.html', ID = ID)
+    return render_template('index.html', str('0811562'))
     ''' end of you code '''
 
 if __name__ == '__main__':
