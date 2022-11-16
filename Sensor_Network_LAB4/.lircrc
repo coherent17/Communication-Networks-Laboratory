@@ -1,0 +1,23 @@
+begin
+	prog = LED
+	button = KEY_1
+	config = on_1
+end
+
+begin
+	prog = LED
+	button = KEY_2
+	config = off_1
+end
+
+begin
+	prog = LED
+	button = KEY_3
+	config = on_2
+end
+
+begin
+	prog = LED
+	button = KEY_4
+	config = off_2
+end
