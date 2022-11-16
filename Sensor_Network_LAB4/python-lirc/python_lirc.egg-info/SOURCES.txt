@@ -1,0 +1,10 @@
+CHANGELOG
+MANIFEST.in
+README.md
+setup.py
+lirc/lirc.c
+python_lirc.egg-info/PKG-INFO
+python_lirc.egg-info/SOURCES.txt
+python_lirc.egg-info/dependency_links.txt
+python_lirc.egg-info/not-zip-safe
+python_lirc.egg-info/top_level.txt
