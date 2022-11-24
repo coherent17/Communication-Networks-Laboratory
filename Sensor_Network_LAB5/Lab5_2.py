@@ -42,11 +42,11 @@ def action(msg):
     humidity = str(humidity)
     temperature = str(temperature)
 
-    if  '/humid' in command:
+    if  'humid' in command:
         telegram_bot.sendMessage(chat_id, 'The current humidity is ' + humidity + ' %')
   
 
-    elif '/temp' in command:
+    elif 'temp' in command:
         telegram_bot.sendMessage(chat_id, 'The current temperature is ' + temperature + ' *C')
 
 
