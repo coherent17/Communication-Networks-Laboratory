@@ -99,7 +99,7 @@ public class MainActivity2 extends AppCompatActivity {
                 intent.setClass(MainActivity2.this, MainActivity3.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("studentID",studentID);
-                bundle.putString("studentID",name);
+                bundle.putString("name",name);
                 bundle.putInt("history", history);
                 intent.putExtras(bundle);
                 startActivity(intent);

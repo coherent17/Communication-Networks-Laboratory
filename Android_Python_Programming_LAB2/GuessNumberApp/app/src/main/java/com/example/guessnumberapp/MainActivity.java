@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.setClass(MainActivity.this, MainActivity2.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("studentID",studentID.getText().toString());
-                bundle.putString("studentID",name.getText().toString());
+                bundle.putString("name",name.getText().toString());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
