@@ -1,7 +1,5 @@
 package com.example.guessnumberapp;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,15 +23,18 @@ public class MainActivity3 extends AppCompatActivity {
         history = (TextView)findViewById(R.id.history);
         BackButton = (Button)findViewById(R.id.BackButton);
 
+        //extract the data from last 2 activity
         Bundle bundle = this.getIntent().getExtras();
         String studentIDTEXT = (String)bundle.getString("studentID");
         String nameTEXT = (String)bundle.getString("name");
         int historyTEXT = (int)bundle.getInt("history");
 
+        //show the data
         studentID.setText("學號:         " + studentIDTEXT);
         name.setText("姓名:         " + nameTEXT);
         history.setText("最佳紀錄:         " + historyTEXT);
 
+        //go back to the main activity
         BackButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

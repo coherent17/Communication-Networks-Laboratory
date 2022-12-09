@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, MainActivity2.class);
 
-                //a object to put many variable into and pass those variables to the next page through intent
+                //an object to put many variables into
+                //and pass those variables to the next page through intent
                 Bundle bundle = new Bundle();
                 bundle.putString("studentID",studentID.getText().toString());
                 bundle.putString("name",name.getText().toString());
