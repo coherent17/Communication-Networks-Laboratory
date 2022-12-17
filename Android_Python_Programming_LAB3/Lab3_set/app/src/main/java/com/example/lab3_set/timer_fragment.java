@@ -21,7 +21,7 @@ public class timer_fragment extends Fragment {
     Button begin;
     Button reStart;
     CountDownTimer countdown;
-    Boolean flag;
+    Boolean flag;       //avoid multi countdown simutaneously
 
 
     @Nullable
@@ -58,8 +58,8 @@ public class timer_fragment extends Fragment {
 
                     countdown = new CountDownTimer(time_left, 1000) {
                         @Override
-                        public void onTick(long l) {
-                            int s = (int)(l/1000) + 1;      //ms -> s
+                        public void onTick(long millisUntilFinished) {
+                            int s = (int)(millisUntilFinished/1000) + 1;      //ms -> s
                             int m = (int)(s / 60);          //s -> m
                             s = s - m * 60;
                             counter.setText(String.format("%02d:%02d", m, s));
@@ -67,6 +67,7 @@ public class timer_fragment extends Fragment {
 
                         @Override
                         public void onFinish() {
+                            //when countdown finished
                             flag = true;
                             counter.setText("00:00");
                         }
