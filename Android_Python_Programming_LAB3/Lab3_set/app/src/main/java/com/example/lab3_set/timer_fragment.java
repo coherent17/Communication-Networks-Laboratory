@@ -1,5 +1,4 @@
 package com.example.lab3_set;
-
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -8,11 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import org.w3c.dom.Text;
 
 public class timer_fragment extends Fragment {
@@ -50,16 +47,20 @@ public class timer_fragment extends Fragment {
             public void onClick(View v){
                 if(flag){
                     flag = false;
+
+                    //get the user wanted time duration
                     int m = minutes.getValue();
                     int s = seconds.getValue();
+
+                    //transfer into msec
                     long time_left = (m * 60 + s) * 1000;
                     counter.setText(String.format("%02d:%02d", m, s));
 
                     countdown = new CountDownTimer(time_left, 1000) {
                         @Override
                         public void onTick(long l) {
-                            int s = (int)(l/1000) + 1;
-                            int m = (int)(s / 60);
+                            int s = (int)(l/1000) + 1;      //ms -> s
+                            int m = (int)(s / 60);          //s -> m
                             s = s - m * 60;
                             counter.setText(String.format("%02d:%02d", m, s));
                         }
