@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -46,10 +45,10 @@ public class stopwatch_fragment extends Fragment {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 long time = SystemClock.elapsedRealtime() - chronometer.getBase();
-                int s = (int)time / 1000;
-                int m = (int) s / 60;
-                int h = (int) m / 60;
-                s = s - m * 60;
+                int s = (int)time / 1000;       //ms -> s
+                int m = (int) s / 60;           //sec -> min
+                int h = (int) m / 60;           //min -> hour
+                s = s - m * 60;                 
                 m = m - h * 60;
                 chronometer.setText(String.format("%02d:%02d:%02d", h, m, s));
             }
