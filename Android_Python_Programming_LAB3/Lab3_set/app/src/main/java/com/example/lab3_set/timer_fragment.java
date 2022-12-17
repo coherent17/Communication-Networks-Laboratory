@@ -59,8 +59,8 @@ public class timer_fragment extends Fragment {
                     countdown = new CountDownTimer(time_left, 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
-                            int s = (int)(millisUntilFinished/1000) + 1;      //ms -> s
-                            int m = (int)(s / 60);          //s -> m
+                            int s = (int)(millisUntilFinished/1000);      //ms -> s
+                            int m = (int)(s / 60);                        //s -> m
                             s = s - m * 60;
                             counter.setText(String.format("%02d:%02d", m, s));
                         }
