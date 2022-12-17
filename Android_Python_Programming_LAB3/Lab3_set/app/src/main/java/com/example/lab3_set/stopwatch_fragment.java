@@ -1,5 +1,4 @@
 package com.example.lab3_set;
-
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
