@@ -20,9 +20,11 @@ def Click(num):
         print(var.get())
         var.set(var.get() + num)
 
+# When user click 'C' -> expression = '0'
 def Clear():
     var.set('0')
 
+# When user click '=' -> evaluate the expression
 def Calculate():
     expression = var.get()
 
