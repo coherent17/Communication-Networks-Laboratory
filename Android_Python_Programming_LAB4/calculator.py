@@ -4,18 +4,30 @@ def SetValue(var):
     tk.Label(f1, textvariable= var, height = 3).grid()
 
 def Click(num):
-    if var.get() == '0' or var.get() == 'Error':
+
+    #deal with 0 +-x/ with other number
+    op = ['+', '-', '*', '/']
+    if var.get() == '0' and num in op:
+        var.set('0' + num)
+
+    # user keep click 0 -> only 0 remain in expression
+    # if divide by 0 -> expression display error
+    elif var.get() == '0' or var.get() == 'Error':
         var.set(num)
+
+    # otherwise, concatenate the click character with expression
     else:
+        print(var.get())
         var.set(var.get() + num)
 
 def Clear():
     var.set('0')
 
 def Calculate():
-    #var.set(eval(var.get()))
     expression = var.get()
 
+    # find out what is the first / second number
+    # and get the operation
     for i in range(1, len(expression)):
         if expression[i] in ['-', '*', '+', '/']:
             operation = expression[i]
@@ -23,6 +35,7 @@ def Calculate():
             b = int(expression[i+1:])
             break
 
+    #switch case to calculate the result
     match operation:
         case '+':
             var.set(a + b)
@@ -47,9 +60,10 @@ if __name__ == "__main__":
     f2.pack()
 
     var = tk.StringVar()
-    var.set("0")
+    var.set('0')
     SetValue(var)
 
+    # button layout with grid
     btn7 =          tk.Button(f2, text = '7', borderwidth = 5, width = 6, height = 2, command = lambda: Click('7')).grid(row = 0, column = 0)
     btn8 =          tk.Button(f2, text = '8', borderwidth = 5, width = 6, height = 2, command = lambda: Click('8')).grid(row = 0, column = 1)
     btn9 =          tk.Button(f2, text = '9', borderwidth = 5, width = 6, height = 2, command = lambda: Click('9')).grid(row = 0, column = 2)
