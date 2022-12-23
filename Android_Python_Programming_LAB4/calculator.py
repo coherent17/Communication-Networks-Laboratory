@@ -16,25 +16,13 @@ def Calculate():
     #var.set(eval(var.get()))
     expression = var.get()
 
-    #if the first number is negative:
-    isNegative = False
-    if expression[0] == '-':
-        isNegative = True
-        expression = expression[1:]
-    
-    pivot = 0
-    a = 0
-    b = 0
-    for i in range(len(expression)):
-        pivot += 1 
+    for i in range(1, len(expression)):
         if expression[i] in ['-', '*', '+', '/']:
             operation = expression[i]
-            a = int(expression[:pivot-1])
-            if isNegative:
-                a = -a;
-            b = int(expression[pivot:])
+            a = int(expression[:i])
+            b = int(expression[i+1:])
             break
-    
+
     match operation:
         case '+':
             var.set(a + b)
