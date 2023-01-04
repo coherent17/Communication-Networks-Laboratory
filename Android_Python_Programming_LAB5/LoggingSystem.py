@@ -1,26 +1,30 @@
 import tkinter as tk
-from tkinter import messagebox
 from PIL import Image, ImageTk
 import pickle
 
-
 def login(Name, Pwd):
 
+    #get the user input name and password
     entry_usr = Name.get()
     entry_pwd = Pwd.get()
 
+    #check if the user info is in the file compressed in pickle
     try:
         try:
             with open('user_info.pickle', 'rb') as f:
                 user_info = pickle.load(f)
 
+    #load error, create a new dict
         except EOFError:
             user_info = {}
 
     except FileNotFoundError:
         user_info = {}
 
+    #check if user is in the dict load from pickle file
     if entry_usr in user_info:
+
+        #check if the password is correct
         if entry_pwd == user_info[entry_usr]:
             tk.messagebox.showinfo(message = 'Login Sucessfully!')
         else:
@@ -28,6 +32,7 @@ def login(Name, Pwd):
 
     # if user info not found
     else:
+        #create a new account with the entry name & password, return 0/1
         sign_up = tk.messagebox.askyesno(message = 'Do you want to create an account by your input?')
         
         if sign_up:
@@ -38,6 +43,7 @@ def login(Name, Pwd):
         else:
             tk.messagebox.showinfo(message = 'See you!')
 
+#sign up pade back-end
 def check_Info(tmpName, tmpPwd, tmpConfirmPwd, w):
     entry_usr = tmpName.get()
     entry_pwd = tmpPwd.get()
@@ -59,7 +65,7 @@ def check_Info(tmpName, tmpPwd, tmpConfirmPwd, w):
 
     elif entry_pwd != entry_confirm_pwd:
         tk.messagebox.showwarning(message = 'Different Password & Confirm Password!')
-        #check_Info(tmpName, tmpPwd, tmpConfirmPwd, w)
+
     else:
         with open('user_info.pickle', 'wb') as f:
             user_info = {entry_usr: entry_pwd}
@@ -67,6 +73,7 @@ def check_Info(tmpName, tmpPwd, tmpConfirmPwd, w):
             tk.messagebox.showinfo(message = 'Sign Up successfully!')
             w.destroy()
 
+#open a new new side window for user to sign up
 def sign_up():
     window2 = tk.Toplevel(window)
     window2.title('Sign Up')
@@ -87,7 +94,7 @@ def sign_up():
     Confirm_Password_Entry = tk.Entry(window2, textvariable = tmpConfirmPwd, show = '*').grid(row = 2, column = 1)
     Sign_UP_Btn = tk.Button(window2, text = 'Sign up', borderwidth = 5, width = 8, height = 1, command = lambda: check_Info(tmpName, tmpPwd, tmpConfirmPwd, window2)).grid(row = 3, column = 1)
 
-
+#main driven code
 if __name__ == "__main__":
     window = tk.Tk()
     window.title("Lab5")
@@ -117,4 +124,3 @@ if __name__ == "__main__":
     sign_btn = tk.Button(f2, text = 'Sign up', borderwidth = 5, width = 8, height = 1, command = lambda: sign_up()).grid(row = 4, column = 1)
 
     window.mainloop()
-
